@@ -1,0 +1,1315 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Reference</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/all.js"></script>
+
+
+          <script>
+        $(function() {
+            setupLanguages(["php"]);
+        });
+      </script>
+      </head>
+
+  <body class="">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+        <img src="images/logo.png" />
+                    <div class="lang-selector">
+                                  <a href="#" data-language-name="php">php</a>
+                            </div>
+                            <div class="search">
+              <input type="text" class="search" id="input-search" placeholder="Search">
+            </div>
+            <ul class="search-results"></ul>
+              <div id="toc">
+      </div>
+                    <ul class="toc-footer">
+                                  <li><a href='http://github.com/mpociot/documentarian'>Documentation Powered by Documentarian</a></li>
+                            </ul>
+            </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+          <!-- START_INFO -->
+<h1>Info</h1>
+<p>Welcome to the generated API reference.
+<a href="http://scma-api.test/docs/collection.json">Get Postman Collection</a></p>
+<!-- END_INFO -->
+<h1>Category</h1>
+<!-- START_14c3d186e6fae88a0bf94b2bbc728937 -->
+<h2>Move Catgory Data</h2>
+<p>Use this api to re-assign any other category to events and sites</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;put(
+    'http://scma-api.test/api/v1/categories/changeCategory',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'old_department_id' =&gt; 3,
+            'department_id' =&gt; 2,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT api/v1/categories/changeCategory</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>old_department_id</code></td>
+<td>integer</td>
+<td>required</td>
+<td>Id of category you want to replace.</td>
+</tr>
+<tr>
+<td><code>department_id</code></td>
+<td>integer</td>
+<td>required</td>
+<td>Id of category you want data to move in.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_14c3d186e6fae88a0bf94b2bbc728937 -->
+<!-- START_80420c095ed96da032c9eb419d7d6e2d -->
+<h2>Fetch Categories</h2>
+<p>This endpoint retrieves all Categories</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://scma-api.test/api/v1/categories',
+    [
+        'query' =&gt; [
+            'total'=&gt; '5',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "id": 1,
+            "name": "Fire Control Management"
+        },
+        {
+            "id": 2,
+            "name": "Emergency Services"
+        },
+        {
+            "id": 5,
+            "name": "Public Services"
+        },
+        {
+            "id": 6,
+            "name": "Human Resources"
+        },
+        {
+            "id": 7,
+            "name": "Technology"
+        }
+    ]
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/v1/categories</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>optional</td>
+<td>Specific category you want to retrieve.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>optional</td>
+<td>Search by category name</td>
+</tr>
+<tr>
+<td><code>total</code></td>
+<td>optional</td>
+<td>Number of categories you want to retrieve. Defaults to 20.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_80420c095ed96da032c9eb419d7d6e2d -->
+<!-- START_51652a01dd7666395568dd6ba9d67d58 -->
+<h2>Add Category</h2>
+<p>This endpoint use to create a category</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://scma-api.test/api/v1/categories',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'News-Report',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/v1/categories</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>required</td>
+<td>Name of the category.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_51652a01dd7666395568dd6ba9d67d58 -->
+<!-- START_58b09cda1a6b4241d0b8f55289d7bd09 -->
+<h2>Update Category</h2>
+<p>Update the specified Category in storage.</p>
+<p>Use this api to Update category.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;put(
+    'http://scma-api.test/api/v1/categories/1',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'News-Report',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT api/v1/categories/{category}</code></p>
+<p><code>PATCH api/v1/categories/{category}</code></p>
+<h4>URL Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>optional</td>
+<td>int required Id of the category.</td>
+</tr>
+</tbody>
+</table>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>optional</td>
+<td>Name of the category.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_58b09cda1a6b4241d0b8f55289d7bd09 -->
+<!-- START_75b173cefee1332cf71f9d29370afde7 -->
+<h2>Delete Category</h2>
+<p>Use this api to Delete specific category.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;delete('http://scma-api.test/api/v1/categories/1');
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE api/v1/categories/{category}</code></p>
+<h4>URL Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>required</td>
+<td>The id of the specific Category.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_75b173cefee1332cf71f9d29370afde7 -->
+<h1>Crawl Logs</h1>
+<!-- START_48b59eb4b66d4c19ff2f6edbb3162dd9 -->
+<h2>Fetch Crawl Logs</h2>
+<p>This endpoint retrieves all crawl logs</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://scma-api.test/api/v1/crawl_logs',
+    [
+        'query' =&gt; [
+            'total'=&gt; '2',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "id": 39551,
+            "description": "Error while crawling https:\/\/www.bain.com\/offices\/moscow - Curl Error No 28 Info: {\"url\":\"https:\/\/www.bain.com\/offices\/moscow\",\"content_type\":null,\"http_code\":0,\"header_size\":0,\"request_size\":474,\"filetime\":-1,\"ssl_verify_result\":0,\"redirect_count\":0,\"total_time\":4.999888,\"namelookup_time\":0.004205,\"connect_time\":0.007795,\"pretransfer_time\":0.036517,\"size_upload\":0,\"size_download\":0,\"speed_download\":0,\"speed_upload\":0,\"download_content_length\":-1,\"upload_content_length\":0,\"starttransfer_time\":0,\"redirect_time\":0,\"certinfo\":[],\"primary_ip\":\"104.18.16.68\",\"primary_port\":443,\"local_ip\":\"192.168.2.150\",\"local_port\":32906,\"redirect_url\":\"\"}",
+            "date_time": "2021-04-14 16:45:12"
+        },
+        {
+            "id": 39550,
+            "description": "Error while crawling https:\/\/www.bain.com\/offices\/milan - Curl Error No 28 Info: {\"url\":\"https:\/\/www.bain.com\/offices\/milan\",\"content_type\":null,\"http_code\":0,\"header_size\":0,\"request_size\":473,\"filetime\":-1,\"ssl_verify_result\":0,\"redirect_count\":0,\"total_time\":5.000519,\"namelookup_time\":0.0042,\"connect_time\":0.007801,\"pretransfer_time\":0.035644,\"size_upload\":0,\"size_download\":0,\"speed_download\":0,\"speed_upload\":0,\"download_content_length\":-1,\"upload_content_length\":0,\"starttransfer_time\":0,\"redirect_time\":0,\"certinfo\":[],\"primary_ip\":\"104.18.16.68\",\"primary_port\":443,\"local_ip\":\"192.168.2.150\",\"local_port\":32904,\"redirect_url\":\"\"}",
+            "date_time": "2021-04-14 16:45:12"
+        }
+    ]
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/v1/crawl_logs</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>total</code></td>
+<td>optional</td>
+<td>Number of crawl_logs you want to retrieve. Defaults to 20.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_48b59eb4b66d4c19ff2f6edbb3162dd9 -->
+<h1>Event</h1>
+<!-- START_9c9fa65f9a287d3c60b4d2a602b09fba -->
+<h2>Fetch Events</h2>
+<p>This endpoint retrieves all events along with categories</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://scma-api.test/api/v1/events',
+    [
+        'query' =&gt; [
+            'total'=&gt; '2',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "id": 1,
+            "name": "Covid-19 Pandemic Impact On Business",
+            "keywords": null,
+            "match_condition": "(^covid^ or ^corona^) and (^virus^ or ^pandemic^) and (^cybercrime^ OR ^fraud^ OR ^phishing^ OR ^leaked^ OR ^hacked^ OR ^ransomware^ OR ^ddos^ OR ^online theft^ OR ^online fraud^ OR ^online bullying^ OR ^fake account^ OR ^hackers^ OR ^online crime^)",
+            "search_type": "and",
+            "google_keywords": "",
+            "crawl_type": 0,
+            "crawl_status": 1,
+            "event_lock": 1,
+            "categories": [
+                {
+                    "category_id": 1,
+                    "name": "Fire Control Management"
+                },
+                {
+                    "category_id": 2,
+                    "name": "Emergency Services"
+                },
+                {
+                    "category_id": 5,
+                    "name": "Public Services"
+                },
+                {
+                    "category_id": 6,
+                    "name": "Human Resources"
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "name": "Test Event",
+            "keywords": null,
+            "match_condition": "^merge^",
+            "search_type": "and",
+            "google_keywords": "",
+            "crawl_type": 0,
+            "crawl_status": 0,
+            "event_lock": 1,
+            "categories": [
+                {
+                    "category_id": 2,
+                    "name": "Emergency Services"
+                }
+            ]
+        }
+    ]
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/v1/events</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>optional</td>
+<td>Specific event you want to retrieve by id.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>optional</td>
+<td>Search by event name</td>
+</tr>
+<tr>
+<td><code>total</code></td>
+<td>optional</td>
+<td>Number of events you want to retrieve. Defaults to 20.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_9c9fa65f9a287d3c60b4d2a602b09fba -->
+<!-- START_40b2dca13b49082417bca22e110bb0d1 -->
+<h2>Add Event</h2>
+<p>This endpoint use to create an event</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://scma-api.test/api/v1/events',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'News-Report',
+            'keywords' =&gt; 'dubai-traffic, dubai-airport',
+            'google_keywords' =&gt; 'crime, politics',
+            'categories' =&gt; [
+                [
+                    'category_id' =&gt; '1',
+                ],
+                [
+                    'category_id' =&gt; '2',
+                ],
+            ],
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/v1/events</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>required</td>
+<td>name of the event.</td>
+</tr>
+<tr>
+<td><code>keywords</code></td>
+<td>string</td>
+<td>required</td>
+<td>You can add multiple keywords comma (,) seperated.</td>
+</tr>
+<tr>
+<td><code>google_keywords</code></td>
+<td>string</td>
+<td>optional</td>
+<td>You can add multiple keywords comma (,) seperated.</td>
+</tr>
+<tr>
+<td><code>categories[0][category_id]</code></td>
+<td>array</td>
+<td>optional</td>
+<td>Associate any category to event by category_id.</td>
+</tr>
+<tr>
+<td><code>categories[1][category_id]</code></td>
+<td>array</td>
+<td>optional</td>
+<td>Associate any category to event by category_id.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_40b2dca13b49082417bca22e110bb0d1 -->
+<!-- START_a7d1daec0d745b4205a48e97a2c75a82 -->
+<h2>Update Event</h2>
+<p>This endpoint use to update an event</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;put(
+    'http://scma-api.test/api/v1/events/1',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'News-Report',
+            'keywords' =&gt; 'dubai-traffic, dubai-airport',
+            'google_keywords' =&gt; 'crime, politics',
+            'categories' =&gt; [
+                [
+                    'category_id' =&gt; '1',
+                ],
+                [
+                    'category_id' =&gt; '2',
+                ],
+            ],
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT api/v1/events/{event}</code></p>
+<p><code>PATCH api/v1/events/{event}</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>required</td>
+<td>name of the event.</td>
+</tr>
+<tr>
+<td><code>keywords</code></td>
+<td>string</td>
+<td>required</td>
+<td>You can add multiple keywords comma (,) seperated.</td>
+</tr>
+<tr>
+<td><code>google_keywords</code></td>
+<td>string</td>
+<td>optional</td>
+<td>You can add multiple keywords comma (,) seperated.</td>
+</tr>
+<tr>
+<td><code>categories[0][category_id]</code></td>
+<td>array</td>
+<td>optional</td>
+<td>Associate any category to event by category_id.</td>
+</tr>
+<tr>
+<td><code>categories[1][category_id]</code></td>
+<td>array</td>
+<td>optional</td>
+<td>Associate any category to event by category_id.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_a7d1daec0d745b4205a48e97a2c75a82 -->
+<!-- START_6f004e557b115c6d4cc94d1ef7352907 -->
+<h2>Delete Event</h2>
+<p>Use this api to Delete specific Event.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;delete('http://scma-api.test/api/v1/events/1');
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE api/v1/events/{event}</code></p>
+<h4>URL Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>required</td>
+<td>The id of the specific Event.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_6f004e557b115c6d4cc94d1ef7352907 -->
+<!-- START_711537553256c889bbf28c6deb6a6f39 -->
+<h2>Immediate Crawl Event</h2>
+<p>Use this api to perform immediate crawl on event.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://scma-api.test/api/v1/crawl_job',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'event_id' =&gt; '1',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/v1/crawl_job</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>event_id</code></td>
+<td>required</td>
+<td>optional</td>
+<td>The id of the specific Event.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_711537553256c889bbf28c6deb6a6f39 -->
+<!-- START_d1376fc5f988be1bb72f4177b8b65c92 -->
+<h2>Crawl Job Status</h2>
+<p>Use this api to perform immediate crawl on event.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://scma-api.test/api/v1/crawl_status/1',
+    [
+        'query' =&gt; [
+            'id'=&gt; '1',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": {
+        "id": 1,
+        "topic_id": 14,
+        "status": "in_progress",
+        "no_of_sites": 1,
+        "site_completed": 0,
+        "completed_at": null,
+        "created_at": "2021-06-14 19:07:05",
+        "updated_at": "2021-06-15 00:49:18"
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/v1/crawl_status/{id}</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>required</td>
+<td>The id of the specific crawl Job.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_d1376fc5f988be1bb72f4177b8b65c92 -->
+<h1>Global Keyword</h1>
+<!-- START_73eb856017f89d5ef5d7ec9c26103a39 -->
+<h2>Fetch Global Keywords</h2>
+<p>This endpoint retrieves all Global Keyword</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://scma-api.test/api/v1/globals',
+    [
+        'query' =&gt; [
+            'total'=&gt; '5',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": []
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/v1/globals</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>optional</td>
+<td>Specific Global Keyword you want to retrieve.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>optional</td>
+<td>Search by Global Keyword</td>
+</tr>
+<tr>
+<td><code>total</code></td>
+<td>optional</td>
+<td>Number of Global Keyword you want to retrieve. Defaults to 20.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_73eb856017f89d5ef5d7ec9c26103a39 -->
+<!-- START_f63780d889b0eaa1108bbb4632c51044 -->
+<h2>Add Global Keyword</h2>
+<p>This endpoint use to create a global keyword</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://scma-api.test/api/v1/globals',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'News-Report',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/v1/globals</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>required</td>
+<td>Name of the Global word.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_f63780d889b0eaa1108bbb4632c51044 -->
+<!-- START_eea54fc99f78368119f3fc977cda02b1 -->
+<h2>Delete Global Keyword</h2>
+<p>Use this api to Delete specific Global Keyword.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;delete('http://scma-api.test/api/v1/globals/1');
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE api/v1/globals/{global}</code></p>
+<h4>URL Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>required</td>
+<td>The id of the specific Global Keyword.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_eea54fc99f78368119f3fc977cda02b1 -->
+<!-- START_6f473de6dbdce6689b89bb70f54b1935 -->
+<h2>Update Global Keyword</h2>
+<p>Update the specified  Global Keyword in storage.</p>
+<p>Use this api to Update  Global Keyword.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;put(
+    'http://scma-api.test/api/v1/globals/1',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'dubai-traffic',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT api/v1/globals/{keyword}</code></p>
+<h4>URL Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>optional</td>
+<td>int required Id of the global keyword.</td>
+</tr>
+</tbody>
+</table>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>optional</td>
+<td>Name of the global keyword.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_6f473de6dbdce6689b89bb70f54b1935 -->
+<h1>Site</h1>
+<!-- START_acea4e77358b9adfc2985b52e64d7c0e -->
+<h2>Fetch Sites</h2>
+<p>This endpoint retrieves all sites along with categories</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://scma-api.test/api/v1/sites',
+    [
+        'query' =&gt; [
+            'total'=&gt; '2',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "id": 1,
+            "url": "https:\/\/www.oliverwyman.com\/media-center.html",
+            "name": "Oliver Wyman Media Release",
+            "crawl": "active",
+            "depth": 1,
+            "interval": 30,
+            "site_color": "#0000a8",
+            "site_type": "normal",
+            "site_selector": "class",
+            "selector_value": "eight--columns",
+            "categories": [
+                {
+                    "category_id": 1,
+                    "name": "Fire Control Management",
+                    "site_id": 1
+                },
+                {
+                    "category_id": 2,
+                    "name": "Emergency Services",
+                    "site_id": 1
+                },
+                {
+                    "category_id": 5,
+                    "name": "Public Services",
+                    "site_id": 1
+                },
+                {
+                    "category_id": 6,
+                    "name": "Human Resources",
+                    "site_id": 1
+                }
+            ]
+        }
+    ]
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/v1/sites</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>optional</td>
+<td>Specific site you want to retrieve by id.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>optional</td>
+<td>Search by site name</td>
+</tr>
+<tr>
+<td><code>depth</code></td>
+<td>optional</td>
+<td>Search by crawl depth of site</td>
+</tr>
+<tr>
+<td><code>total</code></td>
+<td>optional</td>
+<td>Number of sites you want to retrieve. Defaults to 20.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_acea4e77358b9adfc2985b52e64d7c0e -->
+<!-- START_f3c4cfd076c7d491e1373000d9975051 -->
+<h2>Add Site</h2>
+<p>This endpoint use to create a Site</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://scma-api.test/api/v1/sites',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'url' =&gt; 'https://www.google.com/',
+            'name' =&gt; 'News-Report',
+            'crawl' =&gt; 'active|inactive',
+            'site_color' =&gt; '#ff0000',
+            'site_type' =&gt; 'normal',
+            'interval' =&gt; 18,
+            'depth' =&gt; 2,
+            'site_selector' =&gt; 'tag',
+            'selector_value' =&gt; 'article',
+            'categories' =&gt; [
+                [
+                    'category_id' =&gt; '1',
+                ],
+                [
+                    'category_id' =&gt; '2',
+                ],
+            ],
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/v1/sites</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>url</code></td>
+<td>url</td>
+<td>required</td>
+<td>url of the site.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>required</td>
+<td>name of the site.</td>
+</tr>
+<tr>
+<td><code>crawl</code></td>
+<td>string</td>
+<td>required</td>
+<td>Crawl Status of Site.</td>
+</tr>
+<tr>
+<td><code>site_color</code></td>
+<td>string</td>
+<td>required</td>
+<td>This should be hex code of color for site Exp: #000, #ff0000, #d41bd4.</td>
+</tr>
+<tr>
+<td><code>site_type</code></td>
+<td>string</td>
+<td>required</td>
+<td>define type of site either (rss) or (normal) Exp: rss, normal.</td>
+</tr>
+<tr>
+<td><code>interval</code></td>
+<td>integer</td>
+<td>required</td>
+<td>add crawl interval in minutes</td>
+</tr>
+<tr>
+<td><code>depth</code></td>
+<td>integer</td>
+<td>optional</td>
+<td>add crawl depth 1 (Glance), 2 (Moderate), 3 (Deep).</td>
+</tr>
+<tr>
+<td><code>site_selector</code></td>
+<td>string</td>
+<td>optional</td>
+<td>define selector type Exp: class, id, tag.</td>
+</tr>
+<tr>
+<td><code>selector_value</code></td>
+<td>string</td>
+<td>optional</td>
+<td>define selector value which site use to contain their posts.</td>
+</tr>
+<tr>
+<td><code>categories[0][category_id]</code></td>
+<td>array</td>
+<td>optional</td>
+<td>Associate any category to site by category_id.</td>
+</tr>
+<tr>
+<td><code>categories[1][category_id]</code></td>
+<td>array</td>
+<td>optional</td>
+<td>Associate any category to site by category_id.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_f3c4cfd076c7d491e1373000d9975051 -->
+<!-- START_5da3af38c749e691e3c54dc0e2b0112f -->
+<h2>update Site</h2>
+<p>This endpoint use to update a Site</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;put(
+    'http://scma-api.test/api/v1/sites/1',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'url' =&gt; 'https://www.google.com/',
+            'name' =&gt; 'News-Report',
+            'crawl' =&gt; 'active|inactive',
+            'site_color' =&gt; '#ff0000',
+            'site_type' =&gt; 'normal',
+            'interval' =&gt; 7,
+            'depth' =&gt; 2,
+            'site_selector' =&gt; 'tag',
+            'selector_value' =&gt; 'article',
+            'categories' =&gt; [
+                [
+                    'category_id' =&gt; '1',
+                ],
+                [
+                    'category_id' =&gt; '2',
+                ],
+            ],
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT api/v1/sites/{site}</code></p>
+<p><code>PATCH api/v1/sites/{site}</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>url</code></td>
+<td>url</td>
+<td>required</td>
+<td>url of the site.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>required</td>
+<td>name of the site.</td>
+</tr>
+<tr>
+<td><code>crawl</code></td>
+<td>string</td>
+<td>required</td>
+<td>Crawl Status of Site.</td>
+</tr>
+<tr>
+<td><code>site_color</code></td>
+<td>string</td>
+<td>required</td>
+<td>This should be hex code of color for site Exp: #000, #ff0000, #d41bd4.</td>
+</tr>
+<tr>
+<td><code>site_type</code></td>
+<td>string</td>
+<td>required</td>
+<td>define type of site either (rss) or (normal) Exp: rss, normal.</td>
+</tr>
+<tr>
+<td><code>interval</code></td>
+<td>integer</td>
+<td>required</td>
+<td>add crawl interval in minutes</td>
+</tr>
+<tr>
+<td><code>depth</code></td>
+<td>integer</td>
+<td>optional</td>
+<td>add crawl depth 1 (Glance), 2 (Moderate), 3 (Deep).</td>
+</tr>
+<tr>
+<td><code>site_selector</code></td>
+<td>string</td>
+<td>optional</td>
+<td>define selector type Exp: class, id, tag.</td>
+</tr>
+<tr>
+<td><code>selector_value</code></td>
+<td>string</td>
+<td>optional</td>
+<td>define selector value which site use to contain their posts.</td>
+</tr>
+<tr>
+<td><code>categories[0][category_id]</code></td>
+<td>array</td>
+<td>optional</td>
+<td>Associate any category to site by category_id.</td>
+</tr>
+<tr>
+<td><code>categories[1][category_id]</code></td>
+<td>array</td>
+<td>optional</td>
+<td>Associate any category to site by category_id.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_5da3af38c749e691e3c54dc0e2b0112f -->
+<!-- START_2e52dd08962a9ba770f583401a7a71aa -->
+<h2>Delete Event</h2>
+<p>Use this api to Delete specific Event.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;delete('http://scma-api.test/api/v1/sites/1');
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE api/v1/sites/{site}</code></p>
+<h4>URL Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>required</td>
+<td>The id of the specific Event.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_2e52dd08962a9ba770f583401a7a71aa -->
+      </div>
+      <div class="dark-box">
+                        <div class="lang-selector">
+                                    <a href="#" data-language-name="php">php</a>
+                              </div>
+                </div>
+    </div>
+  </body>
+</html>

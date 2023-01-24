@@ -1,0 +1,617 @@
+{
+    "variables": [],
+    "info": {
+        "name": "Laravel API",
+        "_postman_id": "7d541759-ad6d-4ceb-96a6-73050a2f630d",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Category",
+            "description": "",
+            "item": [
+                {
+                    "name": "Move Catgory Data",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "scma-api.test",
+                            "path": "api\/v1\/categories\/changeCategory",
+                            "query": []
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"old_department_id\": 3,\n    \"department_id\": 2\n}"
+                        },
+                        "description": "Use this api to re-assign any other category to events and sites",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Fetch Categories",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "scma-api.test",
+                            "path": "api\/v1\/categories",
+                            "query": [
+                                {
+                                    "key": "id",
+                                    "value": "",
+                                    "description": "Specific category you want to retrieve.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "name",
+                                    "value": "",
+                                    "description": "Search by category name",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "total",
+                                    "value": "5",
+                                    "description": "Number of categories you want to retrieve. Defaults to 20.",
+                                    "disabled": false
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "This endpoint retrieves all Categories",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Add Category",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "scma-api.test",
+                            "path": "api\/v1\/categories",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"News-Report\"\n}"
+                        },
+                        "description": "This endpoint use to create a category",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Update Category\nUpdate the specified Category in storage.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "scma-api.test",
+                            "path": "api\/v1\/categories\/:category",
+                            "query": []
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"News-Report\"\n}"
+                        },
+                        "description": "Use this api to Update category.",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Delete Category",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "scma-api.test",
+                            "path": "api\/v1\/categories\/:category",
+                            "query": []
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "Use this api to Delete specific category.",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Crawl Logs",
+            "description": "",
+            "item": [
+                {
+                    "name": "Fetch Crawl Logs",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "scma-api.test",
+                            "path": "api\/v1\/crawl_logs",
+                            "query": [
+                                {
+                                    "key": "total",
+                                    "value": "2",
+                                    "description": "Number of crawl_logs you want to retrieve. Defaults to 20.",
+                                    "disabled": false
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "This endpoint retrieves all crawl logs",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Event",
+            "description": "",
+            "item": [
+                {
+                    "name": "Fetch Events",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "scma-api.test",
+                            "path": "api\/v1\/events",
+                            "query": [
+                                {
+                                    "key": "id",
+                                    "value": "",
+                                    "description": "Specific event you want to retrieve by id.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "name",
+                                    "value": "",
+                                    "description": "Search by event name",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "total",
+                                    "value": "2",
+                                    "description": "Number of events you want to retrieve. Defaults to 20.",
+                                    "disabled": false
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "This endpoint retrieves all events along with categories",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Add Event",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "scma-api.test",
+                            "path": "api\/v1\/events",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"News-Report\",\n    \"keywords\": \"dubai-traffic, dubai-airport\",\n    \"google_keywords\": \"crime, politics\",\n    \"categories\": [\n        {\n            \"category_id\": \"1\"\n        },\n        {\n            \"category_id\": \"2\"\n        }\n    ]\n}"
+                        },
+                        "description": "This endpoint use to create an event",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Update Event",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "scma-api.test",
+                            "path": "api\/v1\/events\/:event",
+                            "query": []
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"News-Report\",\n    \"keywords\": \"dubai-traffic, dubai-airport\",\n    \"google_keywords\": \"crime, politics\",\n    \"categories\": [\n        {\n            \"category_id\": \"1\"\n        },\n        {\n            \"category_id\": \"2\"\n        }\n    ]\n}"
+                        },
+                        "description": "This endpoint use to update an event",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Delete Event",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "scma-api.test",
+                            "path": "api\/v1\/events\/:event",
+                            "query": []
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "Use this api to Delete specific Event.",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Immediate Crawl Event",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "scma-api.test",
+                            "path": "api\/v1\/crawl_job",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"event_id\": \"1\"\n}"
+                        },
+                        "description": "Use this api to perform immediate crawl on event.",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Crawl Job Status",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "scma-api.test",
+                            "path": "api\/v1\/crawl_status\/:id",
+                            "query": [
+                                {
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The id of the specific crawl Job.",
+                                    "disabled": false
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "Use this api to perform immediate crawl on event.",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Global Keyword",
+            "description": "",
+            "item": [
+                {
+                    "name": "Fetch Global Keywords",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "scma-api.test",
+                            "path": "api\/v1\/globals",
+                            "query": [
+                                {
+                                    "key": "id",
+                                    "value": "",
+                                    "description": "Specific Global Keyword you want to retrieve.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "name",
+                                    "value": "",
+                                    "description": "Search by Global Keyword",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "total",
+                                    "value": "5",
+                                    "description": "Number of Global Keyword you want to retrieve. Defaults to 20.",
+                                    "disabled": false
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "This endpoint retrieves all Global Keyword",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Add Global Keyword",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "scma-api.test",
+                            "path": "api\/v1\/globals",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"News-Report\"\n}"
+                        },
+                        "description": "This endpoint use to create a global keyword",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Delete Global Keyword",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "scma-api.test",
+                            "path": "api\/v1\/globals\/:global",
+                            "query": []
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "Use this api to Delete specific Global Keyword.",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Update Global Keyword\nUpdate the specified  Global Keyword in storage.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "scma-api.test",
+                            "path": "api\/v1\/globals\/:keyword",
+                            "query": []
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"dubai-traffic\"\n}"
+                        },
+                        "description": "Use this api to Update  Global Keyword.",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Site",
+            "description": "",
+            "item": [
+                {
+                    "name": "Fetch Sites",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "scma-api.test",
+                            "path": "api\/v1\/sites",
+                            "query": [
+                                {
+                                    "key": "id",
+                                    "value": "",
+                                    "description": "Specific site you want to retrieve by id.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "name",
+                                    "value": "",
+                                    "description": "Search by site name",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "depth",
+                                    "value": "",
+                                    "description": "Search by crawl depth of site",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "total",
+                                    "value": "2",
+                                    "description": "Number of sites you want to retrieve. Defaults to 20.",
+                                    "disabled": false
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "This endpoint retrieves all sites along with categories",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Add Site",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "scma-api.test",
+                            "path": "api\/v1\/sites",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"url\": \"https:\\\/\\\/www.google.com\\\/\",\n    \"name\": \"News-Report\",\n    \"crawl\": \"active|inactive\",\n    \"site_color\": \"#ff0000\",\n    \"site_type\": \"normal\",\n    \"interval\": 18,\n    \"depth\": 2,\n    \"site_selector\": \"tag\",\n    \"selector_value\": \"article\",\n    \"categories\": [\n        {\n            \"category_id\": \"1\"\n        },\n        {\n            \"category_id\": \"2\"\n        }\n    ]\n}"
+                        },
+                        "description": "This endpoint use to create a Site",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "update Site",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "scma-api.test",
+                            "path": "api\/v1\/sites\/:site",
+                            "query": []
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"url\": \"https:\\\/\\\/www.google.com\\\/\",\n    \"name\": \"News-Report\",\n    \"crawl\": \"active|inactive\",\n    \"site_color\": \"#ff0000\",\n    \"site_type\": \"normal\",\n    \"interval\": 7,\n    \"depth\": 2,\n    \"site_selector\": \"tag\",\n    \"selector_value\": \"article\",\n    \"categories\": [\n        {\n            \"category_id\": \"1\"\n        },\n        {\n            \"category_id\": \"2\"\n        }\n    ]\n}"
+                        },
+                        "description": "This endpoint use to update a Site",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Delete Event",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "scma-api.test",
+                            "path": "api\/v1\/sites\/:site",
+                            "query": []
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "Use this api to Delete specific Event.",
+                        "response": []
+                    }
+                }
+            ]
+        }
+    ]
+}
